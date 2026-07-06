@@ -1,0 +1,2 @@
+for traversing the extensoions from repo to find file for document loder
+For a GitHub RAG system, I’d actually recommend not looping over 40+ extensions with DirectoryLoader. A single os.walk() can traverse the repository once, filter files by extension using os.path.splitext(), and create LangChain Document objects. That approach is significantly faster and avoids scanning the repository dozens of times. It’s the pattern commonly used in production repository chatbots.
