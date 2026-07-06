@@ -3,7 +3,7 @@ from langchain_community.document_loaders import TextLoader, DirectoryLoader
 import os      #for directory management
 from git import Repo
 
-repo_url = "https://github.com/arnav-terex/ReDocs"
+repo_url = "https://github.com/asit2004/netflix_clone"
 local_dir = "./my_local_repo"
 
 try:
@@ -12,22 +12,18 @@ try:
 except Exception as e:
     print(f"Error during cloning: {e}")
 
-# if not os.path.exists(local_dir):
-#     Repo.clone_from(repo_url,local_dir)
-#     print("repository cloned.")
-# else :
-#     print("repository already exist")
+
 
 text_extensions = [
     # JavaScript / TypeScript / Web
-    "js", "jsx", "ts", "tsx", "html", "htm", "css", "scss", "sass", "less", 
-    "json", "xml", "ejs", "twig", "hbs", "jsp", "asp", "aspx",
+    "js", "jsx", "ts", "tsx", "html",  "css", 
+    "json", "xml",
 
     # Python / Data Science
-    "py", "r", "rmd", "ipynb",
+    "py", "r",  "ipynb",
 
     # C / C++ / C# / Java Ecosystem
-    "java", "cpp", "cc", "cxx", "h", "hpp", "cs", "kt", "kts", "scala",
+    "java", "cpp", 
 
     # Modern Backend & Systems
     "go", "rs", "swift", "dart", "lua", "rb", "php", "pl", "pm", "sql",
@@ -39,7 +35,7 @@ text_extensions = [
     "yaml", "yml", "toml", "ini", "conf", "config", "env", "lock", "properties", "csv", "tsv",
 
     # Documentation & Markup
-    "md", "markdown", "rst", "txt", "tex", "asciidoc", "adoc"
+    "md", "markdown", "rst", "txt", 
 ]
 
 documents = []
@@ -52,8 +48,7 @@ for ext in text_extensions:
         recursive = True
     )
     documents.extend(loader.load())
-
-print(len(documents))
+print("documents loaded")
 
 import shutil
 shutil.rmtree(local_dir)            # my_local_repo is no longer needed so delete it
